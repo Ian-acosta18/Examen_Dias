@@ -1,24 +1,14 @@
 package com.example.examen_dias;
-
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class Act28 extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_act28);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        SQLiteDatabase db = openOrCreateDatabase("BD", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad INTEGER)");
+        db.execSQL("INSERT INTO Usuarios(nombre, edad) VALUES('Ian', 20)");
+        finish();
     }
 }

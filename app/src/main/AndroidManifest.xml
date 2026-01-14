@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen_Dias">
         <activity
+            android:name=".Act28"
+            android:exported="false" />
+        <activity
             android:name=".Act29"
             android:exported="false" />
         <activity
